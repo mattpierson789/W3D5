@@ -49,6 +49,37 @@ class PolyTreeNode
 
     end 
 
-    
-    
-end
+    def bfs(target_value)
+
+        queue = [[self]]                    #add root node to the queue 
+
+        visited = [] 
+
+        while !queue.empty?  
+                           #loop through the queue until it is empty                   
+            current = queue.shift           #remove the first node from the queue 
+            node = current.last 
+
+        if node.value == target_value                   #check if node == target 
+            return current 
+        else 
+            visited << node                 # add node to visited 
+
+         node.children.each do |child|
+            if visited.include?(child)
+                new_current = current + [child]
+                queue << new_current
+            end 
+        end 
+    end 
+end 
+
+return nil 
+
+end 
+
+end 
+            
+        
+          
+
